@@ -1,0 +1,77 @@
+<!-- ======= HTML Head ======= -->
+<%- include('../components/htmlHead') %>
+
+<body>
+    
+<!-- ======= Header ======= -->
+<%- include('../components/header') %>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<%- include('../components/sidebar') %>
+<!-- End Sidebar-->
+
+<!-- ======= Main ======= -->
+<main id="main" class="main">
+    <section class="py-5">
+        <div class="container mt-5">
+            <h2 class="text-center">Add Product</h2>
+            <form action="/products/addProduct" method="post" enctype="multipart/form-data">
+                <input type="text" name="adminID" value="<%= admin._id %>" hidden>
+              <div class="mb-3">
+                <label for="name" class="form-label">Product Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter product name" required>
+              </div>
+          
+              <div class="mb-3">
+                <label for="description" class="form-label">Product Description</label>
+                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter product description"></textarea>
+              </div>
+          
+              <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" placeholder="Enter price" name="price" required>
+              </div>
+          
+              <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="category" required>
+                  <option value="">Select category</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="clothing">Clothing</option>
+                  <option value="home">Home</option>
+                  <option value="beauty">Beauty</option>
+                  <!-- Add more categories as needed -->
+                </select>
+              </div>
+          
+              <div class="mb-3">
+                <label for="stockQuantity" class="form-label">Stock Quantity</label>
+                <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" placeholder="Enter stock quantity" required>
+              </div>
+          
+              <div class="mb-3">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="image" name="image"  required>
+              </div>
+          
+              <div class="mb-3 text-center">
+                  <button type="submit" class="btn btn-primary w-100">Submit</button>
+              </div>
+            </form>
+          </div>
+    </section>
+
+</main>
+<!-- End Main -->
+
+<!-- ======= Footer ======= -->
+<%- include('../components/footer') %>
+<!-- End Footer -->
+ 
+<!-- Vendor JS Files -->
+<%- include('../components/scripts') %>
+
+</body>
+
+</html>
