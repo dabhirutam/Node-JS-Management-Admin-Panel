@@ -21,6 +21,6 @@ const authSchema = mongoose.Schema({
     otp  : {type: String, default: null},
 });
 
-const authModel = mongoose.model('admins', authSchema);
+const authModel = mongoose.model('users', authSchema);
 
 module.exports = authModel;
