@@ -1,3 +1,5 @@
+const AddActiveLog = require("../middleware/AddActiveLog");
+const activeLogModel = require("../models/activeLogModal");
 const productModel = require("../models/productModal");
 const fs = require('fs');
 
@@ -12,10 +14,10 @@ const AddProduct = (req, res) => {
 }
 
 const SaveProduct = async (req, res) => {
-    const { name, price, description, category, stockQuantity, adminID } = req.body;
+    const { name, price, description, category, stockQuantity, userID } = req.body;
 
     const product = new productModel({
-        adminID,
+        userID,
         name,
         price,
         description,
@@ -27,6 +29,7 @@ const SaveProduct = async (req, res) => {
     await product.save();
 
     console.log("Product is created..");
+    AddActiveLog("Product is Created..", product._id);
 
     res.redirect('/products');
 }
@@ -47,6 +50,8 @@ const UpdateProduct = async (req, res) => {
     await productModel.findByIdAndUpdate(req.body._id, product);
 
     console.log("Product is Updated..");
+
+    AddActiveLog("Product is Updated..", req.body._id);
     
     res.redirect('/products');
 }
@@ -54,10 +59,20 @@ const UpdateProduct = async (req, res) => {
 const DeleteProduct = async (req, res) => {
     const { image } = await productModel.findById(req.params._id);
     fs.unlinkSync(image);
+
+    AddActiveLog("Product is Deleted..", req.params._id);
+
     await productModel.findByIdAndDelete(req.params._id);
 
     console.log("Product is Deleted..");
     res.redirect('/products');
 }
 
-module.exports = { ViewProduct, AddProduct, SaveProduct, EditProduct, UpdateProduct, DeleteProduct }; 
+const ActiveLogList = async (req, res) => {
+    const activeLogs = await activeLogModel.find();
+    
+
+    res.render('productComponents/activeLogList', {activeLogs});
+}
+
+module.exports = { ViewProduct, AddProduct, SaveProduct, EditProduct, UpdateProduct, DeleteProduct, ActiveLogList }; 

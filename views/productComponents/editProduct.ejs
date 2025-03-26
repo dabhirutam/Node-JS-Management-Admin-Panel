@@ -17,7 +17,7 @@
         <div class="container mt-5">
             <h2 class="text-center">Update Product</h2>
             <form action="/products/updateProduct" method="post" enctype="multipart/form-data">
-                <input type="text" name="adminID" value="<%= admin._id %>" hidden>
+                <input type="text" name="userID" value="<%= admin._id %>" hidden>
                 <input type="text" name="_id" value="<%= product._id %>" hidden>
               <div class="mb-3">
                 <label for="name" class="form-label">Product Name</label>

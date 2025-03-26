@@ -12,6 +12,7 @@ productRoutes.get('/', productController.ViewProduct);
 productRoutes.get('/add', productController.AddProduct);
 productRoutes.get('/editProduct/:_id', productController.EditProduct);
 productRoutes.get('/deleteProduct/:_id', productController.DeleteProduct);
+productRoutes.get('/activeLogList', productController.ActiveLogList);
 
 productRoutes.post('/addProduct', productImgs.single('image'), productController.SaveProduct);
 productRoutes.post('/updateProduct', productImgs.single('image'), productController.UpdateProduct);

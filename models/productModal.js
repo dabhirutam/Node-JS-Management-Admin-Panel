@@ -1,4 +1,3 @@
-const { name } = require('ejs');
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
@@ -9,7 +8,7 @@ const productSchema = mongoose.Schema({
     description: {type: String, default: null},
     image: {type: String, required: true},
 
-    adminID: {type: mongoose.Schema.ObjectId, ref: 'admins', required: true}
+    userID: {type: mongoose.Schema.ObjectId, ref: 'users', required: true}
 });
 
 const productModel = mongoose.model('products', productSchema);

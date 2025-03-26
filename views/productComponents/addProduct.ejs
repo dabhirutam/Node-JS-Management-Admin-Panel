@@ -17,7 +17,7 @@
         <div class="container mt-5">
             <h2 class="text-center">Add Product</h2>
             <form action="/products/addProduct" method="post" enctype="multipart/form-data">
-                <input type="text" name="adminID" value="<%= admin._id %>" hidden>
+                <input type="text" name="userID" value="<%= admin._id %>" hidden>
               <div class="mb-3">
                 <label for="name" class="form-label">Product Name</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Enter product name" required>
